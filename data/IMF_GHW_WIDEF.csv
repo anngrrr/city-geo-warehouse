@@ -1,0 +1,59 @@
+FREQ_ID,FREQ_NAME,REF_AREA_ID,REF_AREA_NAME,INDICATOR_ID,INDICATOR_NAME,UNIT_MEASURE_ID,UNIT_MEASURE_NAME,DATABASE_ID_ID,DATABASE_ID_NAME,UNIT_MULT_ID,UNIT_MULT_NAME,OBS_STATUS_ID,OBS_STATUS_NAME,OBS_CONF_ID,OBS_CONF_NAME,2021-Q4
+Q,Quarterly,ARE,United Arab Emirates,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,76.541
+Q,Quarterly,AUS,Australia,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,112.602
+Q,Quarterly,AUT,Austria,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,127.281
+Q,Quarterly,BEL,Belgium,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,104.803
+Q,Quarterly,BGR,Bulgaria,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,99.682
+Q,Quarterly,BRA,Brazil,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,84.713
+Q,Quarterly,CAN,Canada,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,133.704
+Q,Quarterly,CHE,Switzerland,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,113.631
+Q,Quarterly,CHL,Chile,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,115.619
+Q,Quarterly,CHN,China,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,82.677
+Q,Quarterly,COL,Colombia,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,111.211
+Q,Quarterly,CYP,Cyprus,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,84.711
+Q,Quarterly,CZE,Czechia,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,153.946
+Q,Quarterly,DEU,Germany,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,137.182
+Q,Quarterly,DNK,Denmark,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,109.328
+Q,Quarterly,ESP,Spain,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,116.753
+Q,Quarterly,EST,Estonia,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,104.367
+Q,Quarterly,FIN,Finland,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,92.106
+Q,Quarterly,FRA,France,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,111.338
+Q,Quarterly,GBR,United Kingdom,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,113.047
+Q,Quarterly,GRC,Greece,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,109.951
+Q,Quarterly,HKG,"Hong Kong SAR, China",IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,113.687
+Q,Quarterly,HRV,Croatia,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,107.702
+Q,Quarterly,HUN,Hungary,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,132.804
+Q,Quarterly,IDN,Indonesia,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,79.741
+Q,Quarterly,IND,India,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,75.002
+Q,Quarterly,IRL,Ireland,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,99.531
+Q,Quarterly,ISL,Iceland,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,139.756
+Q,Quarterly,ISR,Israel,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,105.519
+Q,Quarterly,ITA,Italy,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,93.272
+Q,Quarterly,JPN,Japan,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,114.443
+Q,Quarterly,KOR,"Korea, Rep.",IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,106.187
+Q,Quarterly,LTU,Lithuania,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,108.935
+Q,Quarterly,LUX,Luxembourg,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,140.086
+Q,Quarterly,LVA,Latvia,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,117.947
+Q,Quarterly,MAR,Morocco,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,89.07
+Q,Quarterly,MEX,Mexico,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,116.589
+Q,Quarterly,MKD,North Macedonia,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,92.561
+Q,Quarterly,MLT,Malta,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,111.069
+Q,Quarterly,MYS,Malaysia,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,91.418
+Q,Quarterly,NLD,Netherlands,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,141.059
+Q,Quarterly,NOR,Norway,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,87.121
+Q,Quarterly,NZL,New Zealand,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,152.392
+Q,Quarterly,PER,Peru,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,75.585
+Q,Quarterly,PHL,Philippines,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,92.833
+Q,Quarterly,POL,Poland,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,106.104
+Q,Quarterly,PRT,Portugal,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,143.903
+Q,Quarterly,ROU,Romania,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,77.996
+Q,Quarterly,RUS,Russian Federation,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,76.94
+Q,Quarterly,SGP,Singapore,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,93.64
+Q,Quarterly,SRB,Serbia,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,84.459
+Q,Quarterly,SVK,Slovak Republic,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,131.488
+Q,Quarterly,SVN,Slovenia,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,116.098
+Q,Quarterly,SWE,Sweden,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,110.433
+Q,Quarterly,THA,Thailand,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,96.406
+Q,Quarterly,TUR,Turkiye,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,89.994
+Q,Quarterly,USA,United States,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,126.006
+Q,Quarterly,ZAF,South Africa,IMF_GHW_PTI,House price-to-income ratio around the world,RO,Ratio,IMF_GHW,Global Housing Watch,0,Units,A,Normal value,PU,Public,96.639
