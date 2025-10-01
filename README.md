@@ -1,35 +1,30 @@
 # City Geo Warehouse
 
-An ETL playground that builds a unified warehouse of socio-economic metrics. The current focus is on **country-level** indicators compiled from public bulk datasets (OECD, IMF, UNCTAD, World Bank, WEF). The legacy city pipeline remains in the codebase for future expansion.
+An ETL playground for socio-economic metrics. The current focus is on **country-level** indicators compiled from public datasets (OECD, IMF, UNCTAD, World Bank, WEF). Legacy city code is archived; running it by accident now raises a clear error.
 
 ## Directory Layout
 
 `
 .
 +-- data/
-¦   +-- raw/         # original CSV dumps (wide format)
+¦   +-- raw/         # original CSV dumps
 ¦   +-- processed/   # normalized datasets (e.g. country_metrics.csv)
 +-- docker/
 ¦   +-- Dockerfile
 ¦   +-- init.sql
 +-- notebooks/
-¦   +-- city_data_etl.ipynb
+¦   +-- country_metrics_overview.ipynb
 +-- scripts/
 ¦   +-- process_country_metrics.py
 ¦   +-- load_country_metrics.py
-¦   +-- ...
 +-- src/
 ¦   +-- models/
 ¦   ¦   +-- country_data.py
 ¦   ¦   +-- country_etl.py
-¦   ¦   +-- city_data.py (legacy)
-¦   ¦   +-- ...
-¦   +-- utils/
-¦       +-- validators.py
+¦   ¦   +-- city_etl.py (legacy stub)
+¦   ¦   +-- city_data.py
+¦   +-- utils/validators.py
 +-- Makefile
-+-- docker-compose.yml
-+-- requirements.txt
-+-- README.md
 `
 
 ## Setup
@@ -44,15 +39,15 @@ An ETL playground that builds a unified warehouse of socio-economic metrics. The
    pip install --upgrade pip
    pip install -r requirements.txt
    `
-2. Provide credentials in .env:
+2. Provide credentials in .env (see .env.example):
    `env
    POSTGRES_USER=postgres
-   POSTGRES_PASSWORD=your_password
+   POSTGRES_PASSWORD=postgres
    POSTGRES_DB=city_metrics
    POSTGRES_PORT=5432
    DATABASE_URL=postgresql://:@localhost:/
    `
-   API keys are optional at the moment (the active pipeline relies on offline datasets).
+   API keys are optional; the active workflow uses offline data.
 3. Start PostgreSQL:
    `ash
    make up
@@ -60,16 +55,12 @@ An ETL playground that builds a unified warehouse of socio-economic metrics. The
 
 ## Country Data Workflow
 
-1. Drop raw source files in data/raw/ (see data/raw/README.md for provenance and definitions).
+1. Drop new raw CSV files into data/raw/ (see data/raw/README.md for provenance).
 2. Normalize them:
    `ash
    .venv/Scripts/python.exe scripts/process_country_metrics.py
    `
-3. Load the processed table into PostgreSQL:
-   `ash
-   .venv/Scripts/python.exe scripts/load_country_metrics.py
-   `
-   or run everything at once:
+3. Load the processed table into PostgreSQL, or run both steps at once:
    `ash
    make country-etl
    `
@@ -87,25 +78,24 @@ result = etl.run()
 print(result.head())
 `
 
-The loader writes to country_data.country_metrics with an upsert on (country_code, year).
+The loader upserts into country_data.country_metrics on (country_code, year).
 
-## Legacy City Stack (optional)
+### Notebook tour
 
-The project still ships the city collectors and ETL (GeoDB, OpenWeatherMap, OpenStreetMap). They can be exercised with:
-`python
-from src.models.city_etl import CityDataETL
+Open 
+otebooks/country_metrics_overview.ipynb to explore coverage and sample plots without spinning up Docker.
 
-etl = CityDataETL(database_url=os.environ["DATABASE_URL"])
-`
-Those components are not wired into the default workflow until richer city data is available.
+## Legacy city stack
 
-## Docker Helpers
+src/models/city_etl.py remains for reference but now raises a runtime error because the collectors were removed. Re-enable it only after restoring fresh city data sources.
+
+## Docker helpers
 
 `
 make up           # start PostgreSQL
 make down         # stop containers
 make clean        # stop containers and remove data volume
-make init         # full database reset (destroys data)
+make init         # rebuild database (destroys data)
 make logs         # tail PostgreSQL logs
 make country-etl  # process + load country metrics
 `

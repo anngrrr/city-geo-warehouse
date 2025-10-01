@@ -20,7 +20,10 @@ from sqlalchemy.engine import Engine
 from sqlalchemy.exc import SQLAlchemyError
 
 from src.models.city_data import CityMetrics
-from src.models.city_data_collector import CityDataCollector
+try:
+    from src.models.city_data_collector import CityDataCollector
+except ImportError:  # legacy pipeline not available
+    CityDataCollector = None
 from src.utils.validators import log_data_quality_metrics, validate_data_ranges, validate_required_fields
 
 logger = logging.getLogger(__name__)
@@ -31,6 +34,8 @@ class CityDataETL:
 
     def __init__(self, database_url: str) -> None:
         self.engine: Engine = create_engine(database_url, future=True)
+        if CityDataCollector is None:
+            raise RuntimeError('CityDataCollector is not available. The city pipeline is deprecated.')
         self.collector = CityDataCollector()
         self.metadata = MetaData()
         self._ensure_schema_exists()
