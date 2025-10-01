@@ -1,81 +1,71 @@
 # City Geo Warehouse
 
-City Geo Warehouse is a portfolio playground for turning raw public datasets into an analytics-ready warehouse. The current pipeline focuses on country-level metrics (OECD, IMF, UNCTAD, World Bank, WEF). The structure already mirrors what a future city module will need, so as soon as reliable city feeds appear we can plug them in quickly.
+City Geo Warehouse prepares analytics-ready datasets for a future web service where users will be able to filter the best cities to live in by selected criteria. The current focus is on collecting and cleaning country-level socio-economic indicators, and the project structure is ready to attach city-level sources with geometry from OpenStreetMap and other geospatial feeds.
 
-## Story
+## What the Project Does
+- collects open CSV datasets from OECD, IMF, UNCTAD, World Bank, and WEF
+- normalizes indicators with mixed frequencies and units into a single table with explicit country and year labels
+- loads the processed data into PostgreSQL while keeping reruns free from duplicates
+- ships an overview notebook that lets you inspect the resulting dataset in minutes
 
-1. Collect messy CSV exports: monthly CPI, quarterly housing ratios, 1-7 scorecards, different units.
-2. Normalize everything into a tidy (country_code, year) table with explicit units and no silent imputation.
-3. Load the curated dataset into PostgreSQL and ship a notebook so recruiters can explore without touching Docker.
+## ETL Pipeline
 
-## Quick start
+### Data preparation
+Raw files go to `data/raw/`, every source is described in `data/raw/README.md`.
 
-1. Copy the sample environment file and tweak if needed:
-   `bash
-   cp .env.example .env
-   `
-2. Create the virtual environment with uv:
-   `bash
-   uv sync
-   `
-3. Launch PostgreSQL:
-   `bash
-   make up
-   `
-4. Run the full country ETL:
-   `bash
-   make country-etl
-   `
-   The command runs both the normalization script and the loader.
+### Normalization (`scripts/process_country_metrics.py`)
+- reads tables where years are spread across columns
+- converts yearly columns into rows so every country and year occupies a dedicated record
+- aggregates monthly and quarterly series into annual values starting from 2015
+- rescales indicators from a 1-7 scoring scheme to 0-100 and clips extreme outliers
+- drops rows with no available metrics
+- writes the final dataset to `data/processed/country_metrics.csv`
 
-## ETL flow
+### Validation and loading (`scripts/load_country_metrics.py`)
+- validates records with the `CountryMetrics` model (Pydantic) and rules from `src/utils/validators.py`
+- performs an upsert on `(country_code, year)` into the `country_data.country_metrics` table
+- creates required schemas on startup using `docker/init.sql`
 
-`
-raw CSVs
-  -> scripts/process_country_metrics.py
-       -> data/processed/country_metrics.csv
-            -> scripts/load_country_metrics.py
-                 -> Postgres table country_data.country_metrics
-`
+### Exploring the result
+The notebook `notebooks/country_metrics_overview.ipynb` reads the processed CSV, highlights year coverage, compares real GDP growth against the digital economy score, and exports the latest available snapshot.
 
-Highlights:
-- Melt wide tables and aggregate monthly or quarterly series to annual values (>= 2015).
-- Clamp legacy 1-7 WEF scores to 0-100, keep original units for other metrics.
-- Drop rows that have no metrics instead of forward filling.
-- Upsert on (country_code, year) so reruns stay idempotent.
+## Core Metrics
+employee_income_index # employee income index per household in local currency;
+consumer_price_index # annual CPI with 2015 = 100;
+rent_expenditure_percent_gdp # share of government rent expenses relative to GDP;
+house_price_to_income_ratio # housing price to income ratio averaged across quarters;
+real_gdp_growth_rate # real GDP growth rate in percent;
+digital_economy_score # share of businesses using the internet;
+higher_education_score # higher education score rescaled from 1-7 to 0-100;
+life_satisfaction_score # life satisfaction index from 0 to 10;
+cultural_resources_index # cultural resources score rescaled from 1-7 to 0-100;
+sports_expenditure_percent_gdp # government spending on sports as a percentage of GDP;
+road_traffic_mortality_rate # road traffic mortality per 100000 inhabitants;
+forest_area_percent # share of forest land within total territory;
+life_expectancy_years # life expectancy at birth in years.
 
-## Repository layout
+## Repository Layout
+- `data/raw/` raw source files
+- `data/processed/` normalized datasets
+- `docker/` Dockerfile and initialization SQL
+- `scripts/` ETL steps
+- `src/models/` models and loaders
+- `src/utils/validators.py` validation helpers
+- `notebooks/` processed data overview
+- `Makefile`, `docker-compose.yml`, `pyproject.toml`, `.env.example`, `README.md`
 
-- data/raw/ - untouched source files (each documented in data/raw/README.md).
-- data/processed/ - normalized outputs (currently country_metrics.csv).
-- docker/ - Dockerfile and init.sql that create both city_data (legacy) and country_data schemas.
-- notebooks/country_metrics_overview.ipynb - recruiter-friendly tour of the processed dataset.
-- scripts/ - process_country_metrics.py (normalization) and load_country_metrics.py (Postgres loader).
-- src/models/ - Pydantic schema, SQLAlchemy loader, and legacy city stubs.
-- src/utils/validators.py - shared validation helpers.
-- Makefile, docker-compose.yml, requirements.txt, README.md - tooling and docs.
-
-## Explore the data
-
-Open notebooks/country_metrics_overview.ipynb and run all cells. The notebook loads the processed CSV, plots coverage per year, visualizes GDP growth versus digital economy score, and exports a latest-year snapshot. No Docker required.
-
-## Docker helpers
-
-`
-make up           # start PostgreSQL
-make down         # stop containers
-make clean        # remove containers and volume
-make init         # rebuild database
-make logs         # tail PostgreSQL logs
-make country-etl  # normalize and load country metrics
-`
+## Run the Project
+```bash
+cp .env.example .env          # create the environment file from the template
+uv sync                       # build the virtual environment and install dependencies
+make up                       # start the PostgreSQL container
+make country-etl              # normalize the data and load it into the database
+```
 
 ## Roadmap
-
-- Enrich the warehouse with city-level features extracted from OpenStreetMap (distances to water, green ratios, etc.) and join them with country metrics.
-- Publish a dedicated city showcase notebook and Postgres table once data is reliable.
-- Introduce heavier-duty data engineering tooling (dbt, Great Expectations, Dagster) to harden orchestration and testing.
+- Add city-level metrics such as distance to waterfronts, park access, green area share, and transport accessibility from OpenStreetMap, then join them with the country indicators.
+- Build a dedicated city dataset and a companion notebook.
+- Expand the pipeline with dbt for transformations, Airflow or Prefect for orchestration, Great Expectations for data quality checks, Google Cloud integration, Delta Lake style storage, feature store patterns, automated tests, and CI/CD.
 
 ## License
-
 MIT License.
