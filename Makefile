@@ -1,4 +1,4 @@
-.PHONY: up down restart clean init logs help
+.PHONY: up down restart clean init logs help country-etl
 
 help: ## Show this help
 	@echo "Available commands:"
@@ -8,6 +8,7 @@ help: ## Show this help
 	@echo "  make clean     - Remove the database container and volume"
 	@echo "  make init      - Initialize/reset the database"
 	@echo "  make logs      - Show database logs"
+	@echo "  make country-etl - Process raw country data and load into DB"
 
 up: ## Start the database container
 	docker-compose up -d
@@ -35,3 +36,7 @@ logs: ## Show database logs
 # Include environment variables from .env
 -include .env
 export
+
+country-etl: ## Process raw country metrics and load them into PostgreSQL
+	.venv/Scripts/python.exe scripts/process_country_metrics.py
+	.venv/Scripts/python.exe scripts/load_country_metrics.py

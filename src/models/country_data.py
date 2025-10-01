@@ -15,6 +15,7 @@ class CountryMetrics(BaseModel):
         validate_assignment=True,
     )
 
+    country_code: str = Field(..., min_length=2, max_length=10, description='Source country code')
     country_name: str = Field(..., min_length=1, max_length=120, description="Official country name")
     iso2: Optional[str] = Field(default=None, min_length=2, max_length=2, description="ISO 3166-1 alpha-2 code")
     iso3: Optional[str] = Field(default=None, min_length=3, max_length=3, description="ISO 3166-1 alpha-3 code")

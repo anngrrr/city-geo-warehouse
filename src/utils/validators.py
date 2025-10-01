@@ -28,6 +28,11 @@ def validate_data_ranges(df: pd.DataFrame) -> None:
         "cost_of_living_index": (0, 100),
         "housing_price_index": (0, 100),
         "air_quality_index": (0, 500),
+        "digital_economy_score": (0, 100),
+        "higher_education_score": (0, 100),
+        "life_satisfaction_score": (0, 10),
+        "cultural_resources_index": (0, 100),
+        "forest_area_percent": (0, 100),
     }
 
     for column, (lower, upper) in bounded_columns.items():
@@ -48,6 +53,13 @@ def validate_data_ranges(df: pd.DataFrame) -> None:
         "wind_speed_avg",
         "average_salary",
         "rent_price_index",
+        "employee_income_index",
+        "consumer_price_index",
+        "rent_expenditure_percent_gdp",
+        "house_price_to_income_ratio",
+        "sports_expenditure_percent_gdp",
+        "road_traffic_mortality_rate",
+        "life_expectancy_years",
     }
 
     for column in positive_columns:
@@ -94,6 +106,11 @@ def log_data_quality_metrics(df: pd.DataFrame) -> None:
         "education_level_score",
         "forest_proximity_score",
         "green_space_ratio",
+        "digital_economy_score",
+        "higher_education_score",
+        "life_satisfaction_score",
+        "cultural_resources_index",
+        "forest_area_percent",
     ]
 
     for column in stats_columns:

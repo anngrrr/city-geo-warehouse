@@ -70,3 +70,45 @@ CREATE TRIGGER update_city_metrics_updated_at
     BEFORE UPDATE ON city_data.city_metrics
     FOR EACH ROW
     EXECUTE FUNCTION city_data.update_updated_at_column();
+CREATE SCHEMA IF NOT EXISTS country_data;
+
+CREATE TABLE IF NOT EXISTS country_data.country_metrics (
+    id SERIAL PRIMARY KEY,
+    country_code VARCHAR(10) NOT NULL,
+    country_name VARCHAR(255) NOT NULL,
+    iso2 VARCHAR(2),
+    iso3 VARCHAR(3),
+    year INTEGER NOT NULL,
+    employee_income_index DOUBLE PRECISION CHECK (employee_income_index >= 0),
+    consumer_price_index DOUBLE PRECISION CHECK (consumer_price_index >= 0),
+    rent_expenditure_percent_gdp DOUBLE PRECISION CHECK (rent_expenditure_percent_gdp >= 0),
+    house_price_to_income_ratio DOUBLE PRECISION CHECK (house_price_to_income_ratio >= 0),
+    real_gdp_growth_rate DOUBLE PRECISION,
+    digital_economy_score DOUBLE PRECISION CHECK (digital_economy_score BETWEEN 0 AND 100),
+    higher_education_score DOUBLE PRECISION CHECK (higher_education_score BETWEEN 0 AND 100),
+    life_satisfaction_score DOUBLE PRECISION CHECK (life_satisfaction_score BETWEEN 0 AND 10),
+    cultural_resources_index DOUBLE PRECISION CHECK (cultural_resources_index BETWEEN 0 AND 100),
+    sports_expenditure_percent_gdp DOUBLE PRECISION CHECK (sports_expenditure_percent_gdp >= 0),
+    road_traffic_mortality_rate DOUBLE PRECISION CHECK (road_traffic_mortality_rate >= 0),
+    forest_area_percent DOUBLE PRECISION CHECK (forest_area_percent BETWEEN 0 AND 100),
+    life_expectancy_years DOUBLE PRECISION CHECK (life_expectancy_years >= 0),
+    created_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMPTZ DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT uq_country_year UNIQUE (country_code, year)
+);
+
+CREATE INDEX IF NOT EXISTS idx_country_year ON country_data.country_metrics (country_code, year);
+
+CREATE OR REPLACE FUNCTION country_data.update_updated_at_column()
+RETURNS TRIGGER AS 
+BEGIN
+    NEW.updated_at = CURRENT_TIMESTAMP;
+    RETURN NEW;
+END;
+ LANGUAGE plpgsql;
+
+DROP TRIGGER IF EXISTS update_country_metrics_updated_at ON country_data.country_metrics;
+CREATE TRIGGER update_country_metrics_updated_at
+    BEFORE UPDATE ON country_data.country_metrics
+    FOR EACH ROW
+    EXECUTE FUNCTION country_data.update_updated_at_column();

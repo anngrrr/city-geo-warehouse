@@ -96,8 +96,9 @@ def _prepare_higher_education() -> pd.DataFrame:
     df = pd.read_csv(DATA_DIR / 'WEF_GCIHH_GCI_B_05_WIDEF.csv')
     df = _standardize(df)
     value_cols = [c for c in df.columns if re.fullmatch(r'\d{4}', str(c))]
+    df = df[df[value_cols].le(7).any(axis=1)]
     stacked = _stack_years(df[[CODE_COL, NAME_COL] + value_cols], value_cols, 'higher_education_raw')
-    stacked['higher_education_score'] = stacked['higher_education_raw'] / 7 * 100
+    stacked['higher_education_score'] = (stacked['higher_education_raw'] / 7 * 100).clip(upper=100)
     return stacked.drop(columns=['higher_education_raw'])
 
 
@@ -112,8 +113,9 @@ def _prepare_cultural_resources() -> pd.DataFrame:
     df = pd.read_csv(DATA_DIR / 'WEF_TTDI_TTDI_D_13_WIDEF.csv')
     df = _standardize(df)
     value_cols = [c for c in df.columns if re.fullmatch(r'\d{4}', str(c))]
+    df = df[df[value_cols].le(7).any(axis=1)]
     stacked = _stack_years(df[[CODE_COL, NAME_COL] + value_cols], value_cols, 'cultural_resources_raw')
-    stacked['cultural_resources_index'] = stacked['cultural_resources_raw'] / 7 * 100
+    stacked['cultural_resources_index'] = (stacked['cultural_resources_raw'] / 7 * 100).clip(upper=100)
     return stacked.drop(columns=['cultural_resources_raw'])
 
 
@@ -183,6 +185,8 @@ def main() -> None:
         frames.append(df)
 
     combined = _merge_metrics(frames)
+    metric_columns = [col for col in combined.columns if col not in (CODE_COL, NAME_COL, 'year')]
+    combined = combined.dropna(subset=metric_columns, how='all')
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
     combined.to_csv(OUTPUT_PATH, index=False)
     print(f'Wrote {len(combined)} rows to {OUTPUT_PATH}')
