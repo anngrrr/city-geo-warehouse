@@ -30,19 +30,21 @@ Raw files go to `data/raw/`, every source is described in `data/raw/README.md`.
 The notebook `notebooks/country_metrics_overview.ipynb` reads the processed CSV, highlights year coverage, compares real GDP growth against the digital economy score, and exports the latest available snapshot.
 
 ## Core Metrics
-employee_income_index # employee income index per household in local currency;
-consumer_price_index # annual CPI with 2015 = 100;
-rent_expenditure_percent_gdp # share of government rent expenses relative to GDP;
-house_price_to_income_ratio # housing price to income ratio averaged across quarters;
-real_gdp_growth_rate # real GDP growth rate in percent;
-digital_economy_score # share of businesses using the internet;
-higher_education_score # higher education score rescaled from 1-7 to 0-100;
-life_satisfaction_score # life satisfaction index from 0 to 10;
-cultural_resources_index # cultural resources score rescaled from 1-7 to 0-100;
-sports_expenditure_percent_gdp # government spending on sports as a percentage of GDP;
-road_traffic_mortality_rate # road traffic mortality per 100000 inhabitants;
-forest_area_percent # share of forest land within total territory;
-life_expectancy_years # life expectancy at birth in years.
+```bash
+employee_income_index            # employee income index per household in local currency;
+consumer_price_index             # annual CPI with 2015 = 100;
+rent_expenditure_percent_gdp     # share of government rent expenses relative to GDP;
+house_price_to_income_ratio      # housing price to income ratio averaged across quarters;
+real_gdp_growth_rate             # real GDP growth rate in percent;
+digital_economy_score            # share of businesses using the internet;
+higher_education_score           # higher education score rescaled from 1-7 to 0-100;
+life_satisfaction_score          # life satisfaction index from 0 to 10;
+cultural_resources_index         # cultural resources score rescaled from 1-7 to 0-100;
+sports_expenditure_percent_gdp   # government spending on sports as a percentage of GDP;
+road_traffic_mortality_rate      # road traffic mortality per 100000 inhabitants;
+forest_area_percent              # share of forest land within total territory;
+life_expectancy_years            # life expectancy at birth in years.
+```
 
 ## Repository Layout
 - `data/raw/` raw source files
